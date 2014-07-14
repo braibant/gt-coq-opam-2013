@@ -34,7 +34,7 @@
 %  Structure
 \newenvironment{remark}{\footnotesize \begin{description}\item[\emph{Remark}:]}{\end{description}}
 
-\title{GT Coq}
+\title{Package manager for Coq}
 \author{Thomas Braibant}
 \institute[Inria]{Inria}
 \date[11/2013]{11/2013}
@@ -87,16 +87,17 @@
 \end{frame}
 }
 
-\begin{frame}
-  \center 
-  \titlepage
-\end{frame} 
+\plan{Package managing for Coq}{}
+
+\begin{frame}[plain]
+  \includegraphics[width=\linewidth]{figs/current-state.pdf}
+\end{frame}
 
 \begin{frame}{Problems}
   \begin{itemize}
   \item No centralized repository of packages
   \item No unified build system
-  \item Monolithic packages (e.g. ssreflect, compcert, CoLoR, \dots)
+  \item Monolithic packages (e.g. ssreflect, CompCert, CoLoR, \dots)
   \item No easy way to have multiple Coq installs \\
     \parenthesis{symlink, make install, and so on}
   \end{itemize}
@@ -324,16 +325,17 @@ depends: [ "coq" { >= "8.4.2"}]
       ssreflect.1.5  
     \end{tabular}
   \end{center}
+  \parenthesis{Various versions of the same package.}
 \end{frame}
 
 \begin{frame}
   \frametitle{Questions}
   
   \begin{itemize}
-  \item \alert{Broken} packages
+  \item Examples of \alert{unfinished} packages
     \begin{itemize}
     \item Ergo (from contribs) does not compile out of the box!
-    \item CoLoR has no install target
+    \item CoLoR has no install target (easy)
     \end{itemize}
     \pause
   \item Configuration options? (one of a kind problem for CompCert)
@@ -356,6 +358,8 @@ depends: [ "coq" { >= "8.4.2"}]
   \item How to deal with git branches as releases? (HoTT)
   \item camlp5/camlp4?
   \item coq\_makefile, uninstall targets?
+  \item Merge {\tt user-contribs}, {\tt theories}?
+  \item Good uses of {\tt -R}, {\tt -I}?
   \end{itemize}
 \end{frame}
 
@@ -363,16 +367,33 @@ depends: [ "coq" { >= "8.4.2"}]
   \frametitle {Perspectives}
 
   \begin{itemize}
-  \item Fine grained packages
+  \item Fine grained packages 
   \item Stripped down Coq (libraries and plugins as separate packages)
-  \item Download statistics
+  \item Download statistics (how much something is used)
   \item Opam2Web (to list packages)
-  \item Ocamlot (CI/test infrastructure)
-  \item SDK for Windows, OS X (Vagrant)?
+  \item Ocamlot (continuous integration/test infrastructure)
+  \item SDK for Windows, OS X, GNU/Linux (Vagrant?)
+  \item Use libraries in Coq (pprint, framaC/unmarshal, ancient, persistent arrays, ...)
+  \item Use cutting-edge OCaml (gadts, ephemerons, ...)
+  \item Multiple repos of Coq packages
   \end{itemize}
 \end{frame}
 
-\plan{Plan D}{\textbf{Package Coq specific commands as an opam package}}
+\begin{frame}{URLs}
+  \begin{itemize}
+  \item \texttt{https://github.com/braibant/opam}
+  \item \texttt{https://github.com/braibant/opam-coq-repo}
+  \end{itemize}  
+
+  \parenthesis{Pull-requests welcome}
+
+  \parenthesis{Move it to coq.inria.fr?}
+\end{frame}
+\plan{Plan D}{\textbf{Package Coq specific commands as an opam package} 
+
+  \vspace{2em}
+  \parenthesis{On my todo-list}  
+}
 
 
 \plan{TL; DR}{\textbf{    
